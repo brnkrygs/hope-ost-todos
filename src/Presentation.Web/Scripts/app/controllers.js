@@ -91,6 +91,8 @@ angular.module("todos.controllers", ["todos.services"]).
 
         $scope.deleteTodo = function (todo) {
             todo.deleting = true;
+
+            // Use bracket notation to call delete for the sake of IE ()
             TodoFactory['delete']({ id: todo.Id }, {}, function () {
                 $scope.$emit('todo:deleted');
             }, function() {
