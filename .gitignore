@@ -116,6 +116,7 @@ ClientBin/
 *.[Pp]ublish.xml
 *.pfx
 *.publishsettings
+*.swp
 
 # RIA/Silverlight projects
 Generated_Code/
