@@ -6,6 +6,8 @@ This application is developed using ASP.Net MVC 4, WebApi and Angular JS.
 We developed some <a href="https://ost.mybalsamiq.com/projects/glsecdomaindrivendesignapp/grid" target="_blank">wireframes</a> that describe the functionality of
 this simple but very extensible sample. 
 
+Manually forked from [ostusa](https://github.com/ostusa/ost-todos) for presentation at Hope College.
+
 Running
 -------
 Running OST Todos is a snap.
@@ -17,19 +19,19 @@ Clone.
 Build the solution. This will fetch all dependencies. This of course requires Package Restore. Make sure you set "Allow NuGet to download missing packages during build" in Package Manager settings.
 
 ###Step 3###
-Make sure you have a database on your local machine called OstTodos.  Look in the web.config file within /src/presentation.web to update 
+Make sure you have a database on your local machine called HopeTodos.  Look in the web.config file within /src/presentation.web to update 
 your connectionString.  Here are a couple of examples.
 
 ```
 SQL Express (Default in web.config)
 <connectionStrings>
-    <add name="DefaultConnection" connectionString="server=.\SQLExpress;database=OstTodos;Integrated Security=SSPI" 
+    <add name="DefaultConnection" connectionString="server=.\SQLExpress;database=HopeTodos;Integrated Security=SSPI" 
     providerName="System.Data.SqlClient" />
 </connectionStrings>
 
 SQL Server Standard with Integrated Security
 <connectionStrings>
-    <add name="DefaultConnection" connectionString="server=localhost;database=OstTodos;Integrated Security=SSPI" 
+    <add name="DefaultConnection" connectionString="server=localhost;database=HopeTodos;Integrated Security=SSPI" 
     providerName="System.Data.SqlClient" />
 </connectionStrings>
 ```
