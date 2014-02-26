@@ -1,4 +1,8 @@
-﻿angular.module("todos.controllers", ["todos.services"]).
+﻿// Controllers are the components that "back" views (and optionally directives)
+// Declare a dependency on the services
+angular.module("todos.controllers", ["todos.services"]).
+
+    // Controller backing the login view
     controller("LoginCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
 
         $scope.login = function() {
@@ -6,8 +10,10 @@
                 $location.path('/lists');
             });
         };
-
     }]).
+
+
+    // Controller backing the signup form
     controller("RegisterCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
 
         $scope.register = function() {
@@ -15,9 +21,11 @@
                 $location.path('/lists');
             });
         };
-
     }]).
-    controller("ListsCtrl", ["$scope", "TodoList", function($scope, TodoList) {
+
+
+    // Controller backing the list of lists
+    controller("ListsCtrl", ["$scope", "TodoListFactory", function($scope, TodoListFactory) {
 
         var self = this;
 
@@ -26,7 +34,7 @@
         });
 
         this.setLists = function() {
-            TodoList.query(function (lists) {
+            TodoListFactory.query(function (lists) {
                 var items = [], buffer = [];
                 lists.forEach(function(l, i) {
                     buffer.push(l);
@@ -42,27 +50,28 @@
         this.setLists();
         
         $scope.addList = function() {
-            var todo = new TodoList({ Name: $scope.Name });
+            var todo = new TodoListFactory({ Name: $scope.Name });
             todo.$save(function () {
                 $scope.$broadcast('list:added');
                 self.setLists();
             });
         };
-
     }]).
-    controller("ListCtrl", ["$scope", "ListTodo", "Todo", function ($scope, ListTodo, Todo) {
+
+
+    // Controller backing a single list
+    controller("ListCtrl", ["$scope", "ListTodoFactory", "TodoFactory", function ($scope, ListTodoFactory, TodoFactory) {
 
         $scope.$on('todo:deleted', function() {
-            ListTodo.query({listId:$scope.list.Id}, function(todos) {
+            ListTodoFactory.query({listId:$scope.list.Id}, function(todos) {
                 $scope.list.Todos = todos;
             });
         });
 
         $scope.addTodo = function (title) {
-            var todo = new ListTodo({ Title: title });
+            var todo = new ListTodoFactory({ Title: title });
             todo.$save({ listId: $scope.list.Id }, function () {
                 $scope.list.Todos.push(todo);
-                $scope.showAddForm = 0;
                 $scope.Title = "";
             });
         };
@@ -75,11 +84,14 @@
             return count;
         };
     }]).
-    controller("TodoCtrl", ["$scope", "Todo", function ($scope, Todo) {
+
+
+    // Controller backing a todo
+    controller("TodoCtrl", ["$scope", "TodoFactory", function ($scope, TodoFactory) {
 
         $scope.deleteTodo = function (todo) {
             todo.deleting = true;
-            Todo['delete']({ id: todo.Id }, {}, function () {
+            TodoFactory['delete']({ id: todo.Id }, {}, function () {
                 $scope.$emit('todo:deleted');
             }, function() {
                 todo.deleting = false;
@@ -90,7 +102,7 @@
             if (todo.deleting) return;
             todo.Completed = true;
             if (!todo.hasOwnProperty('$update'))
-                todo = new Todo(todo);
+                todo = new TodoFactory(todo);
             todo.$update();
         };
 
@@ -98,7 +110,7 @@
             if (todo.deleting) return;
             todo.Completed = false;
             if (!todo.hasOwnProperty('$update'))
-                todo = new Todo(todo);
+                todo = new TodoFactory(todo);
             todo.$update();
         };
 

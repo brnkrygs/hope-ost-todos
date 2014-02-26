@@ -1,4 +1,6 @@
 ﻿angular.module('todos.directives', []).
+
+    // Directive that deletes an entire todo list after confirmation
     directive('deleteList', function() {
         return {
             restrict: 'A',
@@ -13,6 +15,9 @@
             }
         };
     }).
+
+    // Directive that opens a modal for adding a new todo list
+    // Responds to list:added event
     directive('showAddList', function() {
         return {
             restrict: 'A',
@@ -31,6 +36,8 @@
             }
         };
     }).
+
+    // Directive that puts focus onto the given element
     directive('giveFocus', function() {
         return {
             restrict: 'A',
@@ -43,6 +50,8 @@
             }
         };
     }).
+
+    // Directive that flips the link on the logo based on the value of isLoggedIn() on $rootScope
     directive('brandLink', function() {
         return {
             restrict: 'A',
