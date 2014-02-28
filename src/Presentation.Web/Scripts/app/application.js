@@ -1,9 +1,9 @@
 ﻿"use strict";
 
 // Declare the application, including dependencies on other modules
-var application = angular.module("todos", ["todos.controllers", "ngCookies",'ngRoute', 'todos.directives', 'todos.filters']).
+var application = angular.module("todos", ["todos.controllers", "ngCookies",'ngRoute', 'todos.directives', 'todos.filters'])
 
-    config(["$routeProvider", function($routeProvider) {
+    .config(["$routeProvider", function($routeProvider) {
 
         // Set up routes inside the app
         $routeProvider.when('/lists', { templateUrl: '/Scripts/app/partials/lists.html', controller: 'ListsCtrl' });
@@ -11,12 +11,12 @@ var application = angular.module("todos", ["todos.controllers", "ngCookies",'ngR
         $routeProvider.when('/register', { templateUrl: '/Scripts/app/partials/register.html', controller: 'RegisterCtrl' });
         $routeProvider.otherwise({ redirectTo: '/login' });
 
-    }]).
+    }])
 
     //#region Advanced: Interceptor
 
     // Add an interceptor around HTTP responses that checks for 401 responses and broadcasts event:loginRequired if the resource was locked
-    config(["$httpProvider", function($httpProvider) {
+    .config(["$httpProvider", function($httpProvider) {
         var interceptor = ['$rootScope', '$q', function($rootScope, $q) {
             function success(response) {
                 return response;
