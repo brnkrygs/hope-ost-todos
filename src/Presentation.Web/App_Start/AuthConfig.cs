@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using Presentation.Web.Models;
-
-namespace Presentation.Web
+﻿namespace Presentation.Web
 {
     public static class AuthConfig
     {
