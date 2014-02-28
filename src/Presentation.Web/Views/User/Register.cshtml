@@ -3,27 +3,23 @@
 
 <div class="row">
     <h1 class="text-center">Registration</h1>
-    <div class="span7 userform userform-center well">
+    <div class="col-lg-7 col-md-7 col-xs-7 form form-center well">
         @{ Html.EnableClientValidation(); }
         @{ Html.EnableClientValidation(); }
-        @using (Html.BeginForm("Register", "User", FormMethod.Post, new {@class = "form-horizontal"}))
+        @using( Html.BeginForm( "Register", "User", FormMethod.Post, new { @class = "form-horizontal" } ) )
         {
-            @Html.EditorFor(x => x.Email, new { placeholder = "email@address.com" })
+            @Html.EditorFor( x => x.Email, new { placeholder = "email@address.com" } )
 
-            @Html.EditorFor(x => x.Name, new { placeholder = "NDriven User"})
+            @Html.EditorFor( x => x.Name, new { placeholder = "NDriven User" } )
 
-            <div class="control-group">
-                @Html.LabelFor(x => x.Password, new { @class = "control-label" })
-                <div class="controls">
-                    @Html.PasswordFor(x => x.Password)
-                    @Html.ValidationMessageFor(x => x.Password, null, new {@class = "text-error"})
-                </div>
+            <div class="form-group">
+                @Html.LabelFor( x => x.Password, new { @class = "control-label" } )
+                @Html.PasswordFor( x => x.Password, new { @class = "form-control" } )
+                @Html.ValidationMessageFor( x => x.Password, null, new { @class = "text-error" } )
             </div>
 
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" class="btn">Register</button>
-                </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Register</button>
             </div>
         }
     </div>

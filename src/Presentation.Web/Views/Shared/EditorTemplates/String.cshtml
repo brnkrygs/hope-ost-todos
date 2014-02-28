@@ -1,8 +1,9 @@
 ﻿@model System.String
-<div class="control-group">
+
+<div class="form-group">
     @Html.Label("", new {@class = "control-label"})
-    <div class="controls">
-        @Html.TextBox("", Model, new {placeholder = @ViewData["placeholder"]})
+    <div class="">
+        @Html.TextBox("", Model, new {placeholder = @ViewData["placeholder"], @class="form-control"})
         @Html.ValidationMessage("", new { @class = "text-error" })
     </div>
 </div>
