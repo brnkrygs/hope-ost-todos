@@ -23,7 +23,7 @@
                 <ul class="todos">
 
                     <!-- Managed by TodoCtrl -->
-                    <li ng-repeat="todo in list.Todos | incomplete" ng-controller="TodoCtrl">
+                    <li ng-repeat="todo in list.Todos | incomplete | orderBy:'DueDate'" ng-controller="TodoCtrl">
                         <label class="checkbox">
                             <input ng-click="markDone(todo)" type="checkbox" />
                             {{todo.Title}} 
@@ -38,7 +38,7 @@
                 <ul class="todos">
 
                     <!-- Managed by TodoCtrl -->
-                    <li ng-repeat="todo in list.Todos | complete" ng-controller="TodoCtrl">
+                    <li ng-repeat="todo in list.Todos | complete | orderBy:'DueDate'" ng-controller="TodoCtrl">
                         <label class="checkbox">
                             <input ng-click="markNotDone(todo)" type="checkbox" checked="checked" />
                             {{todo.Title}} 
