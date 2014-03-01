@@ -191,15 +191,6 @@
     <Content Include="Scripts\angular\angular-touch.min.js" />
     <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\angular\angular.min.js" />
-    <Content Include="Scripts\app2\application.js" />
-    <Content Include="Scripts\app2\controllers\app.controller.js" />
-    <Content Include="Scripts\app2\controllers\list.controller.js" />
-    <Content Include="Scripts\app2\controllers\login.controller.js" />
-    <Content Include="Scripts\app2\controllers\register.controller.js" />
-    <Content Include="Scripts\app2\controllers\todo.controller.js" />
-    <Content Include="Scripts\app2\partials\lists.html" />
-    <Content Include="Scripts\app2\partials\login.html" />
-    <Content Include="Scripts\app2\partials\register.html" />
     <Content Include="Scripts\app\application.js" />
     <Content Include="Scripts\app\controllers.js" />
     <Content Include="Scripts\app\directives.js" />
