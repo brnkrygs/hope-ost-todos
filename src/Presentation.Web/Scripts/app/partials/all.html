@@ -1,0 +1,18 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12">
+        <h2>All todo items</h2>
+    </div>
+</div>
+
+<section>
+    <h2>All</h2>
+    <div class="row">
+
+        <div ng-repeat="row in lists">
+            <div ng-repeat="list in row.row">
+                <div ng-repeat="item in list.Todos">{{ item.Title }}</div>
+            </div>
+        </div>
+
+    </div>
+</section>
