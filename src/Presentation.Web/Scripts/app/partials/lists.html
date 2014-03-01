@@ -56,6 +56,19 @@
     </div>
 </div>
 
+<section>
+    <h2>All</h2>
+    <div class="row">
+
+        <div ng-repeat="row in lists">
+            <div ng-repeat="list in row.row">
+                <div ng-repeat="item in list.Todos">{{ item.Title }}</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <div class="modal fade" id="addListModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -69,7 +82,7 @@
                 <form name="addListForm" class="form-horizontal" ng-submit="addList()">
 
                     <div class="form-group" ng-class="{error: addListForm.Name.$invalid}">
-                        <label class="control-label" for="Name"> Name:</label>
+                        <label class="control-label" for="Name">Name:</label>
                         <input class="form-control" type="text" ng-model="Name" value="" id="Name" name="Name" placeholder="New List Name" required="required" />
                     </div>
 
