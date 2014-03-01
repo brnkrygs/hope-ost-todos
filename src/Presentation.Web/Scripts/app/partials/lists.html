@@ -10,7 +10,7 @@
 
         <!-- Managed by ListCtrl -->
         <div class="well todolist" ng-controller="ListCtrl">
-            <h3 class="todolist-title">{{list.Name}} <i delete-list title="Click to delete list" class="glyphicon glyphicon-trash"></i></h3>
+            <h3 class="todolist-title">{{list.Name | reverse}} <i delete-list title="Click to delete list" class="glyphicon glyphicon-trash"></i></h3>
 
             <form name="addTodoForm" class="form-inline" ng-submit="addTodo(Title, DueDate)">
                 <input type="text" class="form-control" ng-model="Title" placeholder="Pick up the milk" give-focus required />
