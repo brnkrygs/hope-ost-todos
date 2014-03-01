@@ -24,7 +24,7 @@
 
                     <!-- Managed by TodoCtrl -->
                     <li ng-repeat="todo in list.Todos | incomplete | orderBy:'DueDate'" ng-controller="TodoCtrl">
-                        <label class="checkbox">
+                        <label class="checkbox" ng-class="{ true:'complete', false:'incomplete' }[todo.Completed]">
                             <input ng-click="markDone(todo)" type="checkbox" />
                             {{todo.Title}} 
                             ({{ todo.DueDate | date }})
@@ -39,7 +39,7 @@
 
                     <!-- Managed by TodoCtrl -->
                     <li ng-repeat="todo in list.Todos | complete | orderBy:'DueDate'" ng-controller="TodoCtrl">
-                        <label class="checkbox">
+                        <label class="checkbox" ng-class="{ true:'complete', false:'incomplete' }[todo.Completed]">
                             <input ng-click="markNotDone(todo)" type="checkbox" checked="checked" />
                             {{todo.Title}} 
                             ({{ todo.DueDate | date }})

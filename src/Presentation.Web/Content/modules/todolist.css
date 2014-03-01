@@ -16,3 +16,6 @@
     top: 8px;
     cursor: pointer;
 }
+
+.complete{ text-decoration: line-through;font-weight: normal; }
+.incomplete{ font-weight: normal; }
