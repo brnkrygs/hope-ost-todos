@@ -22,7 +22,7 @@ namespace Presentation.Web.Controllers
             var todo = _repo.Get(Id);
             todo.Completed = todoInput.Completed;
             _repo.Store(todo);
-            return Request.CreateResponse(HttpStatusCode.OK, new TodoDisplay() {Id = Id, Title = todo.Title, Completed = todo.Completed});
+            return Request.CreateResponse(HttpStatusCode.OK, new TodoDisplay() {Id = Id, Title = todo.Title, Completed = todo.Completed, DueDate = todo.DueDate });
         }
 
         [System.Web.Http.Authorize]

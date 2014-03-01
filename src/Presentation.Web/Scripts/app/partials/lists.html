@@ -12,8 +12,9 @@
         <div class="well todolist" ng-controller="ListCtrl">
             <h3 class="todolist-title">{{list.Name}} <i delete-list title="Click to delete list" class="glyphicon glyphicon-trash"></i></h3>
 
-            <form name="addTodoForm" class="form-inline" ng-submit="addTodo(Title)">
+            <form name="addTodoForm" class="form-inline" ng-submit="addTodo(Title, DueDate)">
                 <input type="text" class="form-control" ng-model="Title" placeholder="Pick up the milk" give-focus required />
+                <input type="date" class="form-control" ng-model="DueDate" required />
                 <button type="submit" class="btn btn-success">Add Todo</button>
             </form>
 
@@ -25,7 +26,9 @@
                     <li ng-repeat="todo in list.Todos | incomplete" ng-controller="TodoCtrl">
                         <label class="checkbox">
                             <input ng-click="markDone(todo)" type="checkbox" />
-                            {{todo.Title}} <i ng-click="deleteTodo(todo)" title="Click to delete todo" class="glyphicon glyphicon-remove"></i>
+                            {{todo.Title}} 
+                            ({{ todo.DueDate | date }})
+                            <i ng-click="deleteTodo(todo)" title="Click to delete todo" class="glyphicon glyphicon-remove"></i>
                         </label>
                     </li>
                     <!-- /Managed by TodoCtrl -->
@@ -38,7 +41,9 @@
                     <li ng-repeat="todo in list.Todos | complete" ng-controller="TodoCtrl">
                         <label class="checkbox">
                             <input ng-click="markNotDone(todo)" type="checkbox" checked="checked" />
-                            {{todo.Title}} <i ng-click="deleteTodo(todo)" title="Click to delete todo" class="glyphicon glyphicon-remove"></i>
+                            {{todo.Title}} 
+                            ({{ todo.DueDate | date }})
+                            <i ng-click="deleteTodo(todo)" title="Click to delete todo" class="glyphicon glyphicon-remove"></i>
                         </label>
                     </li>
                     <!-- /Managed by TodoCtrl -->

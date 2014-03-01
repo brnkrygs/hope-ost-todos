@@ -68,8 +68,8 @@ angular.module("todos.controllers", ["todos.services"]).
             });
         });
 
-        $scope.addTodo = function (title) {
-            var todo = new ListTodoFactory({ Title: title });
+        $scope.addTodo = function (title, dueDate) {
+            var todo = new ListTodoFactory({ Title: title, DueDate: dueDate + "T00:00:00" });
             todo.$save({ listId: $scope.list.Id }, function () {
                 $scope.list.Todos.push(todo);
                 $scope.Title = "";

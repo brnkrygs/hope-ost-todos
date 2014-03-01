@@ -1,4 +1,6 @@
-﻿namespace Presentation.Web.Models.Display
+﻿using System;
+
+namespace Presentation.Web.Models.Display
 {
     public class TodoDisplay
     {
@@ -7,5 +9,7 @@
         public string Title { get; set; }
 
         public long Id { get; set; }
+
+        public DateTime DueDate { get; set; }
     }
 }

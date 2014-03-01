@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -28,7 +29,7 @@ namespace Presentation.Web.Controllers
                 {
                     Name = x.Name,
                     Id = x.Id,
-                    Todos = x.Todos.Select(t => new TodoDisplay() { Id = t.Id, Title = t.Title, Completed = t.Completed }).ToList()
+                    Todos = x.Todos.Select(t => new TodoDisplay() { Id = t.Id, Title = t.Title, Completed = t.Completed, DueDate = t.DueDate}).ToList()
                 }).ToList();
             return displays;
         }
@@ -59,11 +60,11 @@ namespace Presentation.Web.Controllers
         [HttpPost]
         public HttpResponseMessage Todos(long Id, TodoInput todoInput)
         {
-            var todo = new Todo() { Title = todoInput.Title, Completed = false };
+            var todo = new Todo( ) {Title = todoInput.Title, Completed = false, DueDate = todoInput.DueDate};
             var list = _repo.Get(Id);
             list.AddTodo(todo);
             _repo.Store(list);
-            return Request.CreateResponse(HttpStatusCode.OK, new TodoDisplay { Title = todoInput.Title, Id = todo.Id, Completed = false });
+            return Request.CreateResponse( HttpStatusCode.OK, new TodoDisplay { Title = todoInput.Title, Id = todo.Id, Completed = false, DueDate = todoInput.DueDate } );
         }
 
         [Authorize]
@@ -72,7 +73,7 @@ namespace Presentation.Web.Controllers
         {
             var list = _repo.Get(Id);
             return
-                list.Todos.Select(t => new TodoDisplay() { Id = t.Id, Title = t.Title, Completed = t.Completed }).ToList();
+                list.Todos.Select(t => new TodoDisplay() { Id = t.Id, Title = t.Title, Completed = t.Completed, DueDate = t.DueDate }).ToList();
             ;
         }
     }

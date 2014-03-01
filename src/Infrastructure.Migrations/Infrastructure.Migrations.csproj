@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MigrationPersistenceSetup.cs" />
+    <Compile Include="Migrations\_20140228210200_AddDueDateField.cs" />
     <Compile Include="Migrations\CreateTodoTables.cs" />
     <Compile Include="Migrations\CreateUserTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
