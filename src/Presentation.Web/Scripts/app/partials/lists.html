@@ -28,6 +28,7 @@
                             <input ng-click="markDone(todo)" type="checkbox" />
                             {{todo.Title}} 
                             ({{ todo.DueDate | date }})
+                            <i ng-click="deleteTodo(todo)" title="Click to delete todo" class="glyphicon glyphicon-remove"></i>
                         </label>
                     </li>
                     <!-- /Managed by TodoCtrl -->
@@ -42,6 +43,7 @@
                             <input ng-click="markNotDone(todo)" type="checkbox" checked="checked" />
                             {{todo.Title}} 
                             ({{ todo.DueDate | date }})
+                            <i ng-click="deleteTodo(todo)" title="Click to delete todo" class="glyphicon glyphicon-remove"></i>
                         </label>
                     </li>
                     <!-- /Managed by TodoCtrl -->
